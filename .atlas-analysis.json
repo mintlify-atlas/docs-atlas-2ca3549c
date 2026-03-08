@@ -1,0 +1,51 @@
+{
+  "projectType": "cli-tool",
+  "projectName": "FG Character Extractor",
+  "projectDescription": "A Go CLI tool to extract character sheets from Fantasy Grounds campaign files into individual XML files",
+  "theme": "aspen",
+  "primaryColor": "#0EA5E9",
+  "lightColor": "#38BDF8",
+  "darkColor": "#0284C7",
+  "navigation": {
+    "groups": [
+      {
+        "group": "Get Started",
+        "pages": [
+          "introduction",
+          "installation",
+          "quickstart"
+        ]
+      },
+      {
+        "group": "Usage",
+        "pages": [
+          "usage/command-reference",
+          "usage/output-format",
+          "usage/examples"
+        ]
+      },
+      {
+        "group": "Development",
+        "pages": [
+          "development/building",
+          "development/testing",
+          "development/contributing"
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Extract character sheets from Fantasy Grounds db.xml files",
+    "Generate individual XML files per character",
+    "Filter out sensitive tags (public, holder)",
+    "Calculate skill totals with proficiency bonuses",
+    "Cross-platform support (macOS, Windows, Linux)"
+  ],
+  "publicApiSurface": [
+    "fg-char-extract <db.xml>",
+    "Character struct with ID, Level, Tokens, ProfBonus, AbilityBonuses",
+    "run(filename string) error",
+    "writeCharacter(c *Character) error",
+    "skipElement(d *xml.Decoder, start xml.StartElement) error"
+  ]
+}
