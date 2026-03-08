@@ -33,8 +33,8 @@ If you're using pre-built binaries, you don't need Go installed. For building fr
 # Install directly from source using Go
 go install github.com/sdelrio/fg-char-extract@latest
 
-# Verify installation
-fg-char-extract --help
+# Verify installation by running without arguments (uses db.xml in current dir)
+fg-char-extract
 ```
 
 ```bash Manual Build
@@ -107,9 +107,13 @@ sudo mv fg-char-extract-darwin-arm64 /usr/local/bin/fg-char-extract
   </Step>
   
   <Step title="Verify Installation">
+    Run the tool to verify it's installed:
+    
     ```bash
-    fg-char-extract --version
+    fg-char-extract
     ```
+    
+    You should see an error about missing `db.xml` if run in an empty directory, which confirms the tool is working.
   </Step>
 </Steps>
 
@@ -136,9 +140,13 @@ On macOS, you may see a security warning when first running the binary. Go to **
   </Step>
   
   <Step title="Verify Installation">
+    Run the tool to verify it's working:
+    
     ```powershell
-    .\fg-char-extract.exe --version
+    .\fg-char-extract.exe
     ```
+    
+    You should see an error about missing `db.xml` if run in an empty directory, which confirms the tool is working.
   </Step>
 </Steps>
 
@@ -154,18 +162,25 @@ On macOS, you may see a security warning when first running the binary. Go to **
     ```
   </Step>
   
-  <Step title="Or Download Binary">
+  <Step title="Build from Source">
+    Pre-built Linux binaries are not currently available. Build from source:
+    
     ```bash
-    curl -LO https://github.com/sdelrio/fg-char-extract/releases/latest/download/fg-char-extract-linux-amd64
-    chmod +x fg-char-extract-linux-amd64
-    sudo mv fg-char-extract-linux-amd64 /usr/local/bin/fg-char-extract
+    git clone https://github.com/sdelrio/fg-char-extract.git
+    cd fg-char-extract
+    go build -o fg-char-extract main.go
+    sudo mv fg-char-extract /usr/local/bin/
     ```
   </Step>
   
   <Step title="Verify Installation">
+    Run the tool to verify it's installed correctly:
+    
     ```bash
-    fg-char-extract --version
+    fg-char-extract
     ```
+    
+    You should see an error about missing `db.xml` if run in an empty directory, which confirms the tool is working.
   </Step>
 </Steps>
 
@@ -234,22 +249,18 @@ Devbox ensures you have the exact Go version (1.25.7) and environment variables 
 Regardless of your installation method, verify everything works:
 
 <Steps>
-  <Step title="Check Version">
+  <Step title="Check Tool is Available">
+    Run the tool without arguments:
+    
     ```bash
-    fg-char-extract --version
-    ```
-  </Step>
-  
-  <Step title="Run Help Command">
-    ```bash
-    fg-char-extract --help
+    fg-char-extract
     ```
     
-    You should see usage instructions.
+    You should see an error about missing `db.xml` if run in an empty directory, which confirms the tool is in your PATH and working.
   </Step>
   
   <Step title="Test with Sample File">
-    If you have a `db.xml` file handy, try a quick extraction:
+    If you have a Fantasy Grounds `db.xml` file handy, try a quick extraction:
     
     ```bash
     fg-char-extract /path/to/db.xml
